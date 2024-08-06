@@ -102,3 +102,6 @@ OfficeAddinV1.dlm
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# Ignore SQLite database files
+Data/starship.db*
