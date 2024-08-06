@@ -1,0 +1,98 @@
+@model Starship
+
+@{
+    ViewBag.Title = Model.StarshipId == 0 ? "Create Starship" : "Edit Starship";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-primary">@ViewBag.Title</h1>
+
+    <div class="card border-primary">
+        <div class="card-body">
+            <form asp-action="CreateEdit" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnURL" value="@ViewBag.ReturnUrl" />
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Model" class="form-label">Model</label>
+                    <input asp-for="Model" class="form-control" />
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Manufacturer" class="form-label">Manufacturer</label>
+                    <input asp-for="Manufacturer" class="form-control" />
+                    <span asp-validation-for="Manufacturer" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CostInCredits" class="form-label">Cost (Credits)</label>
+                    <input asp-for="CostInCredits" class="form-control" />
+                    <span asp-validation-for="CostInCredits" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Length" class="form-label">Length</label>
+                    <input asp-for="Length" class="form-control" />
+                    <span asp-validation-for="Length" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MaxAtmospheringSpeed" class="form-label">Max Atmosphering Speed</label>
+                    <input asp-for="MaxAtmospheringSpeed" class="form-control" />
+                    <span asp-validation-for="MaxAtmospheringSpeed" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Crew" class="form-label">Crew</label>
+                    <input asp-for="Crew" class="form-control" />
+                    <span asp-validation-for="Crew" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Passengers" class="form-label">Passengers</label>
+                    <input asp-for="Passengers" class="form-control" />
+                    <span asp-validation-for="Passengers" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CargoCapacity" class="form-label">Cargo Capacity</label>
+                    <input asp-for="CargoCapacity" class="form-control" />
+                    <span asp-validation-for="CargoCapacity" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Consumables" class="form-label">Consumables</label>
+                    <input asp-for="Consumables" class="form-control" />
+                    <span asp-validation-for="Consumables" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="HyperdriveRating" class="form-label">Hyperdrive Rating</label>
+                    <input asp-for="HyperdriveRating" class="form-control" />
+                    <span asp-validation-for="HyperdriveRating" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MGLT" class="form-label">MGLT</label>
+                    <input asp-for="MGLT" class="form-control" />
+                    <span asp-validation-for="MGLT" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="StarshipClass" class="form-label">Starship Class</label>
+                    <input asp-for="StarshipClass" class="form-control" />
+                    <span asp-validation-for="StarshipClass" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="StarshipId" />
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">
+                        @if (Model.StarshipId == 0)
+                        {
+                            <span>Create</span>
+                        }
+                        else
+                        {
+                            <span>Save</span>
+                        }
+                    </button>
+                     <button type="button" class="btn btn-secondary" onclick="window.location.href='@ViewBag.ReturnUrl';">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

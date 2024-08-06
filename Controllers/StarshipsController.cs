@@ -54,6 +54,45 @@ public class StarshipsController : Controller
         return View(starship);
     }
 
+    public async Task<IActionResult> CreateEdit(int? id)
+    {
+        ViewBag.ReturnUrl = Request.Headers["Referer"].ToString() ?? Url.Action("Index");
+        if (id == null)
+        {
+            return View(new Starship());
+        }
+        else
+        {
+            var starship = await GetStarshipByIdAsync(id);
+            if (starship == null) return NotFound();
+
+            return View(starship);
+        }
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> CreateEdit(Starship starship, string returnURL)
+    {
+        if (ModelState.IsValid)
+        {
+            if (starship.StarshipId == 0)
+            {
+                _context.Add(starship);
+            }
+            else
+            {
+                _context.Update(starship);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", new { id = starship.StarshipId });
+        }
+
+        ViewBag.returnURL = returnURL;
+        return View(starship);
+    }
+
     public async Task<IActionResult> Delete(int id)
     {
         var starship = await GetStarshipByIdAsync(id);

@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 // Using string for majority of data
 // Some data has either numeric or N/A, string avoids the uncertainty here. 
@@ -7,39 +7,52 @@ public class Starship
 {
     public int StarshipId { get; set; } // Primary Key
     
-    public required string Name { get; set; }
+    [Required(ErrorMessage = "The Name field is required.")]
+    public string Name { get; set; }  = string.Empty;
     
-    public required string Model { get; set; }
+    [Required(ErrorMessage = "The Model field is required.")]
+    public string Model { get; set; }  = string.Empty;
     
-    public required string Manufacturer { get; set; }
+    [Required(ErrorMessage = "The Manufacturer field is required.")]
+    public string Manufacturer { get; set; }  = string.Empty;
     
-    public required string CostInCredits { get; set; }
+    [Required(ErrorMessage = "The Cost (Credits) field is required.")]
+    public string CostInCredits { get; set; }  = string.Empty;
     
-    public required string Length { get; set; }
+    [Required(ErrorMessage = "The Length field is required.")]
+    public string Length { get; set; }  = string.Empty;
     
-    public required string MaxAtmospheringSpeed { get; set; }
+    [Required(ErrorMessage = "The Max Atmosphering Speed field is required.")]
+    public string MaxAtmospheringSpeed { get; set; }  = string.Empty;
     
-    public required string Crew { get; set; }
+    [Required(ErrorMessage = "The Crew field is required.")]
+    public string Crew { get; set; }  = string.Empty;
     
-    public required string Passengers { get; set; }
+    [Required(ErrorMessage = "The Passengers field is required.")]
+    public string Passengers { get; set; }  = string.Empty;
     
-    public required string CargoCapacity { get; set; }
+    [Required(ErrorMessage = "The Cargo Capacity field is required.")]
+    public string CargoCapacity { get; set; }  = string.Empty;
     
-    public required string Consumables { get; set; }
+    [Required(ErrorMessage = "The Consumables field is required.")]
+    public string Consumables { get; set; }  = string.Empty;
     
-    public required string HyperdriveRating { get; set; }
+    [Required(ErrorMessage = "The Hypedrive Rating field is required.")]
+    public string HyperdriveRating { get; set; }  = string.Empty;
     
-    public required string MGLT { get; set; }
+    [Required(ErrorMessage = "The MGLT field is required.")]
+    public string MGLT { get; set; }  = string.Empty;
     
-    public required string StarshipClass { get; set; }
+    [Required(ErrorMessage = "The Starship Class field is required.")]
+    public string StarshipClass { get; set; }  = string.Empty;
     
-    public required string[] Pilots { get; set; }
+    public string[] Pilots { get; set; } = [];
     
-    public required string[] Films { get; set; }
+    public string[] Films { get; set; } = [];
     
     public DateTime Created { get; set; }
     
     public DateTime Edited { get; set; }
     
-    public required string URL { get; set; }
+    public string URL { get; set; } = string.Empty;
 }
