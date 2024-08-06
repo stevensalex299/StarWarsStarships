@@ -1,0 +1,47 @@
+@model Starship
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-primary">Starship Details</h1>
+
+    <div class="row">
+        <!-- Starship Image -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Starship Image">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Name</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Starship Details -->
+        <div class="col-md-8">
+            <div class="card border-light">
+                <div class="card-body">
+                    <p class="card-text"><strong>Model:</strong> @Model.Model</p>
+                    <p class="card-text"><strong>Manufacturer:</strong> @Model.Manufacturer</p>
+                    <p class="card-text"><strong>Cost:</strong> @Model.CostInCredits</p>
+                    <p class="card-text"><strong>Length:</strong> @Model.Length</p>
+                    <p class="card-text"><strong>Speed:</strong> @Model.MaxAtmospheringSpeed</p>
+                    <p class="card-text"><strong>Crew:</strong> @Model.Crew</p>
+                    <p class="card-text"><strong>Passengers:</strong> @Model.Passengers</p>
+                    <p class="card-text"><strong>Cargo Capacity:</strong> @Model.CargoCapacity</p>
+                    <p class="card-text"><strong>Consumables:</strong> @Model.Consumables</p>
+                    <p class="card-text"><strong>Hyperdrive Rating:</strong> @Model.HyperdriveRating</p>
+                    <p class="card-text"><strong>MGLT:</strong> @Model.MGLT</p>
+                    <p class="card-text"><strong>Starship Class:</strong> @Model.StarshipClass</p>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a href="@Url.Action("Edit", new { id = Model.StarshipId })" class="btn btn-outline-warning me-2">Edit</a>
+                <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+

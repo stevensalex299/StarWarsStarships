@@ -1,0 +1,54 @@
+@model IEnumerable<Starship>
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-center text-primary">@ViewBag.Title</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h3 class="mb-3 text-purple">Maybe You Would Like:</h3>
+            @if (ViewBag.RandomStarship != null)
+            {
+                <div class="card mb-3 shadow-sm" style="max-width: 18rem;">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Starship Image" />
+                    <div class="card-body bg-light">
+                        <h5 class="card-title text-info">@ViewBag.RandomStarship.Name</h5>
+                        <p class="card-text"><strong>Model:</strong> @ViewBag.RandomStarship.Model</p>
+                        <p class="card-text"><strong>Class:</strong> @ViewBag.RandomStarship.StarshipClass</p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p class="text-center text-muted">No random starship available.</p>
+            }
+        </div>
+    </div>
+
+    <div id="starship-container">
+        @await Html.PartialAsync("_StarshipList", new { Starships = Model, CurrentPage = ViewBag.CurrentPage, TotalPages = ViewBag.TotalPages })
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(document).on('click', '.pagination .page-link', function (e) {
+            e.preventDefault();
+            var page = $(this).data('page');
+            if (page) {
+                $.ajax({
+                    url: '@Url.Action("Index")',
+                    type: 'GET',
+                    data: { page: page },
+                    success: function (data) {
+                        $('#starship-container').html(data);
+                    },
+                    error: function () {
+                        alert('Failed to load data.');
+                    }
+                });
+            }
+        });
+    });
+</script>
