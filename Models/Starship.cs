@@ -55,4 +55,6 @@ public class Starship
     public DateTime Edited { get; set; }
     
     public string URL { get; set; } = string.Empty;
+    
+    public string ImageURL { get; set; } = "https://via.placeholder.com/";
 }

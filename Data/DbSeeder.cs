@@ -38,6 +38,12 @@ public class DbSeeder
                 return;
             }
 
+            // Populate the imageURLs based on local assets
+            foreach (var starship in starships)
+            {
+                starship.ImageURL = GetImageUrlForStarship(starship.Name);
+            }
+
             await _context.Starships.AddRangeAsync(starships);
             await _context.SaveChangesAsync();
             _logger.LogInformation("Database has been seeded with starship data.");
@@ -47,4 +53,31 @@ public class DbSeeder
             _logger.LogError(ex, "Unexpected error occurred during seeding.");
         }
     }
+
+    private string GetImageUrlForStarship(string starshipName)
+    {
+        // Sanitize starship name to create a valid image file name
+        var sanitizedStarshipName = starshipName
+            .Replace(" ", "-")
+            .Replace("/", "-")
+            .ToLower();
+
+        // List of possible image extensions
+        var extensions = new[] { ".png", ".jpg", ".jpeg"};
+        
+        // Construct file path and check each extension
+        foreach (var extension in extensions)
+        {
+            var imageFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Assets", $"{sanitizedStarshipName}{extension}");
+
+            if (File.Exists(imageFilePath))
+            {
+                return $"/Assets/{sanitizedStarshipName}{extension}";
+            }
+        }
+
+        // Return placeholder image URL if no file exists
+        return "https://via.placeholder.com/";
+    }
+
 }

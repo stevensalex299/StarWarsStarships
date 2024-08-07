@@ -94,6 +94,10 @@ namespace StarWarsStarships.Data.Migrations
                     b.Property<string>("URL")
                         .IsRequired()
                         .HasColumnType("TEXT");
+                    
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("StarshipId");
 

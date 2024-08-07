@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Delete";
+    var imageUrl = Model.ImageURL;
+    var imageSource = imageUrl.Contains("placeholder") ? $"{imageUrl}/150" : imageUrl;
 }
 
 <div class="container mt-4">
@@ -12,6 +14,9 @@
             <h5 class="card-title text-danger">@Model.Name</h5>
             <p class="card-text"><strong>Model:</strong> @Model.Model</p>
             <p class="card-text"><strong>Class:</strong> @Model.StarshipClass</p>
+            <div class="mt-3">
+                <img src="@Model.ImageURL" alt="@Model.Name Image" class="img-fluid rounded" />
+            </div>
         </div>
     </div>
 

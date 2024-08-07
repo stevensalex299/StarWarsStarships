@@ -34,7 +34,8 @@ namespace StarWarsStarships.Data.Migrations
                     Films = table.Column<string>(type: "TEXT", nullable: false),
                     Created = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Edited = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    URL = table.Column<string>(type: "TEXT", nullable: false)
+                    URL = table.Column<string>(type: "TEXT", nullable: false),
+                    ImageURL = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

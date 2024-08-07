@@ -1,5 +1,10 @@
 @model IEnumerable<Starship>
 
+@{
+    var randomStarshipImageUrl = ViewBag.RandomStarship.ImageURL;
+    var randomStarshipImageSource = randomStarshipImageUrl.Contains("placeholder") ? $"{randomStarshipImageUrl}/150" : randomStarshipImageUrl;
+}
+
 <div class="container mt-4">
     <h1 class="mb-4 text-center text-primary">@ViewBag.Title</h1>
 
@@ -9,11 +14,16 @@
             @if (ViewBag.RandomStarship != null)
             {
                 <div class="card mb-3 shadow-sm" style="max-width: 18rem;">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Starship Image" />
+                    <img src="@randomStarshipImageSource" class="card-img-top" alt="Starship Image" />
                     <div class="card-body bg-light">
                         <h5 class="card-title text-info">@ViewBag.RandomStarship.Name</h5>
                         <p class="card-text"><strong>Model:</strong> @ViewBag.RandomStarship.Model</p>
                         <p class="card-text"><strong>Class:</strong> @ViewBag.RandomStarship.StarshipClass</p>
+                        <div class="d-flex align-items-center">
+                            <a href="@Url.Action("Details", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-info btn-sm me-2">Details</a>
+                            <a href="@Url.Action("CreateEdit", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-warning btn-sm me-2">Edit</a>
+                            <a href="@Url.Action("Delete", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </div>
                     </div>
                 </div>
             }

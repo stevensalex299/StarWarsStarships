@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Details";
+    var imageUrl = Model.ImageURL;
+    var imageSource = imageUrl.Contains("placeholder") ? $"{imageUrl}/300" : imageUrl;
 }
 
 <div class="container mt-4">
@@ -11,7 +13,7 @@
         <!-- Starship Image -->
         <div class="col-md-4">
             <div class="card">
-                <img src="https://via.placeholder.com/300" class="card-img-top" alt="Starship Image">
+                <img src="@imageSource" class="card-img-top" alt="Starship Image">
                 <div class="card-body">
                     <h5 class="card-title">@Model.Name</h5>
                 </div>
