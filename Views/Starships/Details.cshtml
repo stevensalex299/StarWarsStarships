@@ -12,17 +12,17 @@
     <div class="row">
         <!-- Starship Image -->
         <div class="col-md-4">
-            <div class="card">
+            <div class="card mb-4 shadow-sm">
                 <img src="@imageSource" class="card-img-top" alt="Starship Image">
-                <div class="card-body">
-                    <h5 class="card-title">@Model.Name</h5>
+                <div class="card-body bg-light">
+                    <h5 class="card-title text-info text-center">@Model.Name</h5>
                 </div>
             </div>
         </div>
 
         <!-- Starship Details -->
         <div class="col-md-8">
-            <div class="card border-light">
+             <div class="card border-light mb-4 shadow-sm">
                 <div class="card-body">
                     <p class="card-text"><strong>Model:</strong> @Model.Model</p>
                     <p class="card-text"><strong>Manufacturer:</strong> @Model.Manufacturer</p>
@@ -39,8 +39,8 @@
                 </div>
             </div>
 
-            <div class="mt-4">
-                <a href="@Url.Action("CreateEdit", new { id = Model.StarshipId })" class="btn btn-outline-warning me-2">Edit</a>
+            <div class="mt-4 d-flex justify-content-start">
+                <a href="@Url.Action("CreateEdit", new { id = Model.StarshipId })" class="btn btn-outline-warning btn-sm me-2">Modify</a>
                 <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Back</a>
             </div>
         </div>

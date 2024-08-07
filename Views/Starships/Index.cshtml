@@ -10,7 +10,7 @@
 
     <div class="row mb-4">
         <div class="col-md-12">
-            <h3 class="mb-3 text-purple">Maybe You Would Like:</h3>
+            <h3 class="mb-3 text-purple">Explore Our Featured Starship:</h3>
             @if (ViewBag.RandomStarship != null)
             {
                 <div class="card mb-3 shadow-sm" style="max-width: 18rem;">
@@ -21,15 +21,15 @@
                         <p class="card-text"><strong>Class:</strong> @ViewBag.RandomStarship.StarshipClass</p>
                         <div class="d-flex align-items-center">
                             <a href="@Url.Action("Details", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-info btn-sm me-2">Details</a>
-                            <a href="@Url.Action("CreateEdit", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-warning btn-sm me-2">Edit</a>
-                            <a href="@Url.Action("Delete", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-danger btn-sm">Delete</a>
+                            <a href="@Url.Action("CreateEdit", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-warning btn-sm me-2">Modify</a>
+                            <a href="@Url.Action("Delete", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-success btn-sm">Purchase</a>
                         </div>
                     </div>
                 </div>
             }
             else
             {
-                <p class="text-center text-muted">No random starship available.</p>
+                <p class="text-center text-muted">We currently have no featured starships. Please check back soon!</p>
             }
         </div>
     </div>

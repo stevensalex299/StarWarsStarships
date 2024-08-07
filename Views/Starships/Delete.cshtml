@@ -7,16 +7,18 @@
 }
 
 <div class="container mt-4">
-    <h1 class="mb-4 text-danger">Delete Starship</h1>
+    <h1 class="mb-4 text-success">Purchase Starship</h1>
 
-    <div class="card border-danger mb-4">
+    <div class="card border-success mb-4">
         <div class="card-body">
-            <h5 class="card-title text-danger">@Model.Name</h5>
+            <h5 class="card-title text-success">@Model.Name</h5>
             <p class="card-text"><strong>Model:</strong> @Model.Model</p>
             <p class="card-text"><strong>Class:</strong> @Model.StarshipClass</p>
+            <p class="card-text"><strong>Cost (Credits):</strong> <span class="text-success h4">@Model.CostInCredits</span></p>
             <div class="mt-3">
                 <img src="@Model.ImageURL" alt="@Model.Name Image" class="img-fluid rounded" />
             </div>
+            <p class="text-success mt-3"><strong>Note:</strong> This starship will be removed from inventory upon purchase.</p>
         </div>
     </div>
 
@@ -24,7 +26,7 @@
         @Html.AntiForgeryToken()
         <input type="hidden" asp-for="StarshipId" />
         <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-success">Purchase</button>
             <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
         </div>
     </form>

@@ -60,9 +60,6 @@ app.publish/
 project.lock.json
 project.fragment.lock.json
 
-# Publish output
-wwwroot/
-
 # NuGet packages
 *.nupkg
 *.snupkg
