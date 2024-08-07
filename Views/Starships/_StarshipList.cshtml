@@ -1,4 +1,4 @@
-@model dynamic
+@model StarshipListViewModel
 
 <div class="container mt-4">
     <h2 class="mb-4 text-primary">Our Starship Collection</h2>
@@ -25,9 +25,9 @@
                         <td>@item.Model</td>
                         <td>@item.StarshipClass</td>
                         <td class="d-flex justify-content-start">
-                            <a href="@Url.Action("Details", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-info btn-sm me-2">Details</a>
-                            <a href="@Url.Action("CreateEdit", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-warning btn-sm me-2">Modify</a>
-                            <a href="@Url.Action("Delete", new { id = @ViewBag.randomStarship.StarshipId })" class="btn btn-outline-success btn-sm">Purchase</a>
+                            <a href="@Url.Action("Details", new { id = @item.StarshipId })" class="btn btn-outline-info btn-sm me-2">Details</a>
+                            <a href="@Url.Action("CreateEdit", new { id = @item.StarshipId })" class="btn btn-outline-warning btn-sm me-2">Modify</a>
+                            <a href="@Url.Action("Delete", new { id = @item.StarshipId })" class="btn btn-outline-success btn-sm">Purchase</a>
                         </td>
                     </tr>
                 }

@@ -36,7 +36,7 @@ public class StarshipsController : Controller
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 // Return the partial view for AJAX requests
-                return PartialView("_StarshipList", new { Starships = starships, CurrentPage = page, TotalPages = totalPages });
+                return PartialView("_StarshipList", new StarshipListViewModel{ Starships = starships, CurrentPage = page, TotalPages = totalPages });
             }
 
             // Fetch a random starship for non-AJAX requests

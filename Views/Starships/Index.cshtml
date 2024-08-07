@@ -35,7 +35,7 @@
     </div>
 
     <div id="starship-container">
-        @await Html.PartialAsync("_StarshipList", new { Starships = Model, CurrentPage = ViewBag.CurrentPage, TotalPages = ViewBag.TotalPages })
+        @await Html.PartialAsync("_StarshipList", new StarshipListViewModel{ Starships = Model, CurrentPage = ViewBag.CurrentPage, TotalPages = ViewBag.TotalPages })
     </div>
 </div>
 
