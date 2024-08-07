@@ -222,7 +222,19 @@ public class StarshipsController : Controller
         // Sanitize file name
         var fileName = Path.GetFileNameWithoutExtension(imageFile.FileName).Replace(" ", "-").ToLower();
         var extension = Path.GetExtension(imageFile.FileName);
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Assets", $"{fileName}{extension}");
+        
+        // Generate a unique file name if the file already exists
+        var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "Assets");
+        var filePath = Path.Combine(directoryPath, $"{fileName}{extension}");
+        var counter = 1;
+        
+        while (System.IO.File.Exists(filePath))
+        {
+            // Append a counter to the file name if a file with the same name already exists
+            var newFileName = $"{fileName}({counter})";
+            filePath = Path.Combine(directoryPath, $"{newFileName}{extension}");
+            counter++;
+        }
 
         // Save the new file
         using (var stream = new FileStream(filePath, FileMode.Create))
@@ -231,6 +243,6 @@ public class StarshipsController : Controller
         }
 
         // Return the URL for the new image
-        return $"/Assets/{fileName}{extension}";
+        return $"/Assets/{Path.GetFileName(filePath)}";
     }
 }
